@@ -1,2 +1,59 @@
+// custom variables
+$primary: #334be9;
+$secondary: #8a8fa7;
+$success: #2e7d32;
+$warning: #ff6d00;
+$danger: #d50000;
+$dark: #2c2e3a;
+$body-bg: #23252e;
+$line-height: 1px;
+
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 @import '../node_modules/material-icons/iconfont/material-icons.css';
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $body-bg;
+}
+
+#logo {
+  .material-icons-outlined {
+    font-size: 40px;
+  }
+}
+
+.material-icons-outlined {
+  vertical-align: middle;
+  line-height: $line-height;
+}
+
+.icon {
+  width: 3rem;
+  height: 3rem;
+}
+
+.icon {
+  span {
+    font-size: 2.25rem;
+  }
+}
+
+.icon-shape {
+  display: inline-flex;
+  padding: 12px;
+  text-align: center;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-shape {
+  span {
+    font-size: 1.25rem;
+  }
+}
+
+#charts {
+  height: 480px;
+}
