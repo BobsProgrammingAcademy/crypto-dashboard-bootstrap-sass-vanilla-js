@@ -43,7 +43,7 @@ var barChartOptions = {
     categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
     labels: {
       style: {
-        colors: "#f5f7ff",
+        colors: '#f5f7ff',
       },
     },
   },
@@ -51,12 +51,12 @@ var barChartOptions = {
     title: {
       text: '$ (thousands)',
       style: {
-        color:  "#f5f7ff",
+        color:  '#f5f7ff',
       },
     },
     labels: {
       style: {
-        colors: "#f5f7ff",
+        colors: '#f5f7ff',
       },
     },
   },
@@ -64,7 +64,7 @@ var barChartOptions = {
     opacity: 1
   },
   grid: {
-    borderColor: "#55596e",
+    borderColor: '#55596e',
     yaxis: {
       lines: {
         show: true,
@@ -78,10 +78,10 @@ var barChartOptions = {
   },
   legend: {
     labels: {
-      colors: "#f5f7ff",
+      colors: '#f5f7ff',
     },
     show: true,
-    position: "bottom",
+    position: 'bottom',
   },
   tooltip: {
     y: {
@@ -92,31 +92,30 @@ var barChartOptions = {
   }
 };
 
-
-var barChart = new ApexCharts(document.querySelector("#bar-chart"), barChartOptions);
+var barChart = new ApexCharts(document.querySelector('#bar-chart'), barChartOptions);
 barChart.render();
 
 
 // AREA CHART
 var areaChartOptions = {
   series: [{
-    name: "Purchase Orders",
+    name: 'Purchase Orders',
     data: [31, 40, 28, 51, 42, 109, 100],
   }, {
-    name: "Sales Orders",
+    name: 'Sales Orders',
     data: [11, 32, 45, 32, 34, 52, 41],
   }],
   chart: {
-    type: "area",
-    background: "transparent",
+    type: 'area',
+    background: 'transparent',
     height: 350,
     stacked: false,
     toolbar: {
       show: false,
     },
   },
-  colors: ["#00ab57", "#d50000"],
-  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+  colors: ['#00ab57', '#d50000'],
+  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
   dataLabels: {
     enabled: false,
   },
@@ -126,12 +125,12 @@ var areaChartOptions = {
       opacityTo: 0.1,
       shadeIntensity: 1,
       stops: [0, 100],
-      type: "vertical",
+      type: 'vertical',
     },
-    type: "gradient",
+    type: 'gradient',
   },
   grid: {
-    borderColor: "#55596e",
+    borderColor: '#55596e',
     yaxis: {
       lines: {
         show: true,
@@ -145,32 +144,32 @@ var areaChartOptions = {
   },
   legend: {
     labels: {
-      colors: "#f5f7ff",
+      colors: '#f5f7ff',
     },
     show: true,
-    position: "bottom",
+    position: 'bottom',
   },
   markers: {
     size: 6,
-    strokeColors: "#1b2635",
+    strokeColors: '#1b2635',
     strokeWidth: 3,
   },
   stroke: {
-    curve: "smooth",
+    curve: 'smooth',
   },
   xaxis: {
     axisBorder: {
-      color: "#55596e",
+      color: '#55596e',
       show: true,
     },
     axisTicks: {
-      color: "#55596e",
+      color: '#55596e',
       show: true,
     },
     labels: {
       offsetY: 5,
       style: {
-        colors: "#f5f7ff",
+        colors: '#f5f7ff',
       },
     },
   },
@@ -178,28 +177,28 @@ var areaChartOptions = {
   [
     {
       title: {
-        text: "Purchase Orders",
+        text: 'Purchase Orders',
         style: {
-          color: "#f5f7ff",
+          color: '#f5f7ff',
         },
       },
       labels: {
         style: {
-          colors: ["#f5f7ff"],
+          colors: ['#f5f7ff'],
         },
       },
     },
     {
       opposite: true,
       title: {
-        text: "Sales Orders",
+        text: 'Sales Orders',
         style: {
-          color:  "#f5f7ff",
+          color:  '#f5f7ff',
         },
       },
       labels: {
         style: {
-          colors: ["#f5f7ff"],
+          colors: ['#f5f7ff'],
         },
       },
     },
@@ -207,9 +206,9 @@ var areaChartOptions = {
   tooltip: {
     shared: true,
     intersect: false,
-    theme: "dark",
+    theme: 'dark',
   }
 };
 
-var areaChart = new ApexCharts(document.querySelector("#area-chart"), areaChartOptions);
+var areaChart = new ApexCharts(document.querySelector('#area-chart'), areaChartOptions);
 areaChart.render();
