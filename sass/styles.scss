@@ -28,25 +28,13 @@ body {
   height: $size;
 }
 
-.icon {
-  .material-icons-outlined {
-    font-size: 26px;
-  }
-}
-
 .icon-shape {
   display: inline-flex;
-  padding: 12px;
-  text-align: center;
-  border-radius: 50%;
   align-items: center;
   justify-content: center;
-}
-
-.icon-shape {
-  span {
-    font-size: 20px;
-  }
+  text-align: center;
+  padding: 12px;
+  border-radius: 50%;
 }
 
 #charts {
