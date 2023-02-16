@@ -88,7 +88,8 @@ var barChartOptions = {
       formatter: function (val) {
         return '$ ' + val + ' thousands'
       }
-    }
+    },
+    theme: 'dark',
   }
 };
 
