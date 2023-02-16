@@ -23,8 +23,9 @@ body {
 }
 
 .icon {
-  width: 48px;
-  height: 48px;
+  $size: 48px;
+  width: $size;
+  height: $size;
 }
 
 .icon {
