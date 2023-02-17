@@ -3,7 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Cryptocurrency Dashboard</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
@@ -13,10 +16,10 @@
     <!-- Header -->
     <div class="container-fluid bg-primary py-2">
       <header class="container py-3">
-        <div class="row align-items-center justify-content-between">
-          <div class="col-6 d-flex align-items-center">
-            <a class="d-flex align-items-center h4 text-white text-decoration-none text-uppercase" href="/">
-              Bob's Company
+        <div class="row flex-nowrap justify-content-between align-items-center">
+          <div class="col-6 d-flex align-items-center mb-2 mb-md-0">
+            <a class="d-flex align-items-center mb-2 mb-md-0 h4 text-white text-decoration-none text-uppercase" href="/">
+              Crypto Dashboard
             </a>
           </div>
           <div class="col-6 d-flex align-items-center justify-content-end">
@@ -38,16 +41,10 @@
     </div>
 
     <div  class="container-fluid bg-dark py-1">
-      <div class="container my-2">
+      <div class="container nav-scroller mt-2 mb-2">
         <nav class="nav d-flex justify-content-between">
           <a class="text-secondary text-decoration-none text-uppercase p-2" href="#">
             <span class="material-icons-outlined">dashboard</span> Dashboard
-          </a>
-          <a class="text-secondary text-decoration-none text-uppercase p-2" href="#">
-            <span class="material-icons-outlined">inventory_2</span> Products
-          </a>
-          <a class="text-secondary text-decoration-none text-uppercase p-2" href="#">
-            <span class="material-icons-outlined">shopping_cart</span> Sales
           </a>
           <a class="text-secondary text-decoration-none text-uppercase p-2" href="#">
             <span class="material-icons-outlined">poll</span> Reports
@@ -55,13 +52,32 @@
           <a class="text-secondary text-decoration-none text-uppercase p-2" href="#">
             <span class="material-icons-outlined">settings</span> Settings
           </a>
+          <a class="text-secondary text-decoration-none text-uppercase p-2" href="#">
+            <span class="material-icons-outlined">help_outline</span> About
+          </a>
+          <a class="text-secondary text-decoration-none text-uppercase p-2" href="#">
+            <span class="material-icons-outlined">email</span> Contact
+          </a>
         </nav>
       </div>
     </div>
     <!-- End Header -->
+
+    <!-- Today's date -->
+    <div class="container py-3">
+      <div class="row">
+        <div class="col-12">
+          <div class="text-white mt-3 ms-2">
+            <span class="text-secondary">Today:</span>
+            <span id="date"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Today's date -->
     
     <!-- Main -->
-    <main class="container py-5">
+    <main class="container py-3">
 
       <!-- Statistics -->
       <div class="row mb-2">
@@ -72,15 +88,13 @@
               <div class="row">
                 <div class="col">
                   <h5 class="card-title text-uppercase text-secondary">
-                    PRODUCTS
+                    Categories
                   </h5>
-                  <span class="h2 text-white font-weight-bold">
-                    249
-                  </span>
+                  <span id="categories" class="h2 text-white font-weight-bold"></span>
                 </div>
                 <div class="col-auto">
                   <div class="icon icon-shape bg-primary text-white rounded-circle">
-                    <span class="material-icons-outlined">inventory_2</span>
+                    <i class="fa-solid fa-coins fa-lg"></i>
                   </div>
                 </div>
               </div>
@@ -94,15 +108,13 @@
               <div class="row">
                 <div class="col">
                   <h5 class="card-title text-uppercase text-secondary">
-                    ORDERS
+                    Exchanges
                   </h5>
-                  <span class="h2 text-white font-weight-bold">
-                    83
-                  </span>
+                  <span id="exchanges" class="h2 text-white font-weight-bold"></span>
                 </div>
                 <div class="col-auto">
                   <div class="icon icon-shape bg-warning text-white rounded-circle">
-                    <span class="material-icons-outlined">add_shopping_cart</span>
+                    <i class="fa-solid fa-chart-area fa-lg"></i>
                   </div>
                 </div>
               </div>
@@ -116,15 +128,13 @@
               <div class="row">
                 <div class="col">
                   <h5 class="card-title text-uppercase text-secondary">
-                    SALES
+                    Platforms
                   </h5>
-                  <span class="h2 text-white font-weight-bold">
-                    79
-                  </span>
+                  <span id="platforms" class="h2 text-white font-weight-bold"></span>
                 </div>
                 <div class="col-auto">
                   <div class="icon icon-shape bg-success text-white rounded-circle">
-                    <span class="material-icons-outlined">shopping_cart</span>
+                    <i class="fa-solid fa-chart-pie fa-lg"></i>
                   </div>
                 </div>
               </div>
@@ -138,15 +148,13 @@
               <div class="row">
                 <div class="col">
                   <h5 class="card-title text-uppercase text-secondary">
-                    ALERTS
+                    Indexes
                   </h5>
-                  <span class="h2 text-white font-weight-bold">
-                    56
-                  </span>
+                  <span id="indexes" class="h2 text-white font-weight-bold"></span>
                 </div>
                 <div class="col-auto">
                   <div class="icon icon-shape bg-danger text-white rounded-circle">
-                    <span class="material-icons-outlined">notification_important</span>
+                    <i class="fa-solid fa-chart-column fa-lg"></i>
                   </div>
                 </div>
               </div>
@@ -156,31 +164,18 @@
 
       </div>
       <!-- End Statistics -->
-    
-      <!-- Charts -->
+
+      <!-- Table -->
       <div class="row mb-2">
-        <div class="col-md-6">
+        <div class="col-12">
           <div class="card bg-dark p-4 mb-4">
             <div class="card-body">
-              <h5 class="card-title text-white text-center">Revenue vs Profit</h5>
-              <div id="bar-chart"></div>
+              <div id="crypto" class="table-responsive"></div>
             </div>
           </div>
         </div>
-
-        <div class="col-md-6">
-          <div class="card bg-dark p-4">
-            <div class="card-body">
-              <h5 class="card-title text-white text-center">
-                Purchase and Sales Orders
-              </h5>
-              <div id="area-chart"></div>
-            </div>
-          </div>
-        </div>
-        
       </div>
-      <!-- End Charts -->
+      <!-- End Table -->
     
     </main>
     <!-- End Main -->
@@ -189,6 +184,9 @@
 
     <!-- ApexCharts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.37.0/apexcharts.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom JS -->
     <script src="js/scripts.js"></script>

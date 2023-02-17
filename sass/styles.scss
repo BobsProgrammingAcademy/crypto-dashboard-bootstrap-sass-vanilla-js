@@ -5,6 +5,7 @@ $success: #2e7d32;
 $warning: #ff6d00;
 $danger: #d50000;
 $dark: #2c2e3a;
+$light: #383b44;
 $body-bg: #23252e;
 $line-height: 1px;
 
@@ -37,6 +38,18 @@ body {
   border-radius: 50%;
 }
 
-#charts {
-  height: 480px;
+#date {
+  color: #4caf50;
+  background-color: rgba(76, 175, 80, 0.1);
+  padding: 5px;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
+nav {
+  a {
+    &:hover {
+      font-weight: bold;
+    }
+  }
 }

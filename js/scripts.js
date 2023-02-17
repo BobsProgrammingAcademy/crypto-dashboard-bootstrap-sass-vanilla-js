@@ -1,215 +1,219 @@
-// BAR CHART
-var barChartOptions = {
-  series: [
-    {
-      name: 'Net Profit',
-      data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
-    }, {
-      name: 'Revenue',
-      data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
-    }, {
-      name: 'Free Cash Flow',
-      data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+// TODAY'S DATE
+
+var date = new Date().toLocaleDateString('en-GB', {
+  weekday: 'long', 
+  year: 'numeric', 
+  month: 'long', 
+  day: 'numeric'
+});
+
+document.getElementById('date').innerHTML = date;
+
+
+// CATEGORIES
+
+const getCategories = async () => {
+  await fetch('https://api.coingecko.com/api/v3/coins/categories/list', {
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods':'GET, POST, PUT, DELETE',
+    },
+  })
+  .then((response) => response.json())
+  .then((data) => {
+    console.log('Categories:', data.length);
+    document.getElementById('categories').innerHTML = data.length;
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+};
+
+getCategories();
+
+
+// EXCHANGES
+
+const getExchanges = async () => {
+  await fetch('https://api.coingecko.com/api/v3/exchanges', {
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods':'GET, POST, PUT, DELETE',
+    },
+  })
+  .then((response) => response.json())
+  .then((data) => {
+    console.log('Exchanges:', data.length);
+    document.getElementById('exchanges').innerHTML = data.length;
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+};
+
+getExchanges();
+
+
+// ASSET PLATFORMS
+
+const getPlatforms = async () => {
+  await fetch('https://api.coingecko.com/api/v3/asset_platforms', {
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods':'GET, POST, PUT, DELETE',
+    },
+  })
+  .then((response) => response.json())
+  .then((data) => {
+    console.log('Platforms:', data.length);
+    document.getElementById('platforms').innerHTML = data.length;
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+};
+
+getPlatforms();
+
+
+// INDEXES
+
+const getIndexes = async () => {
+  await fetch('https://api.coingecko.com/api/v3/indexes', {
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods':'GET, POST, PUT, DELETE',
+    },
+  })
+  .then((response) => response.json())
+  .then((data) => {
+    console.log('Indexes:', data.length);
+    document.getElementById('indexes').innerHTML = data.length;
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+};
+
+getIndexes();
+
+
+// CRYPTOCURRENCY TABLE
+
+const cryptoDiv = document.getElementById('crypto');
+let tableHeaders = ['ID', 'Image', 'Name', 'Symbol', 'Price', '24h', 'Volume', 'Market Cap'];
+
+const createCryptoTable = () => {
+  while (cryptoDiv.firstChild) {
+    cryptoDiv.removeChild(cryptoDiv.firstChild);
+  }
+  
+  let cryptoTable = document.createElement('table');
+  cryptoTable.classList.add('cryptoTable', 'table', 'table-dark', 'table-hover', 'border-light');
+  
+  let cryptoTableHead = document.createElement('thead');
+  cryptoTableHead.className = 'cryptoTableHead';
+  
+  let cryptoTableHeaderRow = document.createElement('tr');
+  cryptoTableHeaderRow.className = 'cryptoTableHeaderRow';
+
+  tableHeaders.forEach(header => {
+    let cryptoHeader = document.createElement('th');
+    cryptoHeader.innerHTML = header;
+    cryptoTableHeaderRow.append(cryptoHeader);
+  });
+
+  cryptoTableHead.append(cryptoTableHeaderRow);
+  cryptoTable.append(cryptoTableHead);
+
+  let cryptoTableBody = document.createElement('tbody');
+  cryptoTableBody.className = 'cryptoTableBody';
+  cryptoTable.append(cryptoTableBody);
+  cryptoDiv.append(cryptoTable);
+}
+
+const appendCrypto = (singleCoin, singleCoinID) => {
+  const cryptoTable = document.querySelector('.cryptoTableBody');
+  let cryptoTableBodyRow = document.createElement('tr');
+  cryptoTableBodyRow.className = 'cryptoTableBodyRow';
+
+  let coinID = document.createElement('td');
+  coinID.innerHTML = singleCoinID;
+  
+  let coinImage = document.createElement('td');
+  let image = document.createElement('img');
+  image.src = singleCoin.image;
+  image.setAttribute('height', '30px');
+  image.setAttribute('width', '30px');
+  coinImage.appendChild(image);
+
+  let coinName = document.createElement('td');
+  coinName.innerHTML = singleCoin.name;
+
+  let coinSymbol = document.createElement('td');
+  coinSymbol.innerHTML = singleCoin.symbol;
+
+  let coinCurrentPrice = document.createElement('td');
+  coinCurrentPrice.innerHTML = '$' + singleCoin.current_price.toFixed(2);
+
+  let coin24h = document.createElement('td');
+  coin24h.innerHTML = singleCoin.price_change_percentage_24h.toFixed(2) + '%';
+  coin24h.style.color = singleCoin.price_change_percentage_24h > 0 ? '#2e7d32' : '#d50000';
+
+  let coinVolume = document.createElement('td');
+  coinVolume.innerHTML = '$' + singleCoin.total_volume.toLocaleString();
+
+  let coinMarketCap = document.createElement('td');
+  coinMarketCap = '$' + singleCoin.market_cap.toLocaleString()
+
+  cryptoTableBodyRow.append(
+    coinID,
+    coinImage,
+    coinName,
+    coinSymbol,
+    coinCurrentPrice, 
+    coin24h,
+    coinVolume,
+    coinMarketCap,
+  );
+
+  cryptoTable.append(cryptoTableBodyRow);
+};
+
+const getCrypto = async () => {
+  await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=5&page=1&sparkline=false', {
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods':'GET, POST, PUT, DELETE',
+    },
+  })
+  .then((response) => response.json())
+  .then((coins) => {
+    console.log('Crypto Data:', coins);
+    createCryptoTable();
+    for (const coin of coins) {
+      let coinID = coins.indexOf(coin) + 1;
+      appendCrypto(coin, coinID);
     }
-  ],
-  chart: {
-    type: 'bar',
-    height: 350,
-    toolbar: {
-      show: false,
-    },
-  },
-  colors: [
-    '#2e7d32',
-    '#2962ff',
-    '#d50000',
-  ],
-  plotOptions: {
-    bar: {
-      horizontal: false,
-      columnWidth: '55%',
-      endingShape: 'rounded',
-    },
-  },
-  dataLabels: {
-    enabled: false
-  },
-  stroke: {
-    show: true,
-    width: 2,
-    colors: ['transparent']
-  },
-  xaxis: {
-    categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
-    labels: {
-      style: {
-        colors: '#f5f7ff',
-      },
-    },
-  },
-  yaxis: {
-    title: {
-      text: '$ (thousands)',
-      style: {
-        color:  '#f5f7ff',
-      },
-    },
-    labels: {
-      style: {
-        colors: '#f5f7ff',
-      },
-    },
-  },
-  fill: {
-    opacity: 1
-  },
-  grid: {
-    borderColor: '#55596e',
-    yaxis: {
-      lines: {
-        show: true,
-      },
-    },
-    xaxis: {
-      lines: {
-        show: true,
-      },
-    },
-  },
-  legend: {
-    labels: {
-      colors: '#f5f7ff',
-    },
-    show: true,
-    position: 'bottom',
-  },
-  tooltip: {
-    y: {
-      formatter: function (val) {
-        return '$ ' + val + ' thousands'
-      }
-    },
-    theme: 'dark',
-  }
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
 };
 
-var barChart = new ApexCharts(document.querySelector('#bar-chart'), barChartOptions);
-barChart.render();
-
-
-// AREA CHART
-var areaChartOptions = {
-  series: [{
-    name: 'Purchase Orders',
-    data: [31, 40, 28, 51, 42, 109, 100],
-  }, {
-    name: 'Sales Orders',
-    data: [11, 32, 45, 32, 34, 52, 41],
-  }],
-  chart: {
-    type: 'area',
-    background: 'transparent',
-    height: 350,
-    stacked: false,
-    toolbar: {
-      show: false,
-    },
-  },
-  colors: ['#00ab57', '#d50000'],
-  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-  dataLabels: {
-    enabled: false,
-  },
-  fill: {
-    gradient: {
-      opacityFrom: 0.4,
-      opacityTo: 0.1,
-      shadeIntensity: 1,
-      stops: [0, 100],
-      type: 'vertical',
-    },
-    type: 'gradient',
-  },
-  grid: {
-    borderColor: '#55596e',
-    yaxis: {
-      lines: {
-        show: true,
-      },
-    },
-    xaxis: {
-      lines: {
-        show: true,
-      },
-    },
-  },
-  legend: {
-    labels: {
-      colors: '#f5f7ff',
-    },
-    show: true,
-    position: 'bottom',
-  },
-  markers: {
-    size: 6,
-    strokeColors: '#1b2635',
-    strokeWidth: 3,
-  },
-  stroke: {
-    curve: 'smooth',
-  },
-  xaxis: {
-    axisBorder: {
-      color: '#55596e',
-      show: true,
-    },
-    axisTicks: {
-      color: '#55596e',
-      show: true,
-    },
-    labels: {
-      offsetY: 5,
-      style: {
-        colors: '#f5f7ff',
-      },
-    },
-  },
-  yaxis: 
-  [
-    {
-      title: {
-        text: 'Purchase Orders',
-        style: {
-          color: '#f5f7ff',
-        },
-      },
-      labels: {
-        style: {
-          colors: ['#f5f7ff'],
-        },
-      },
-    },
-    {
-      opposite: true,
-      title: {
-        text: 'Sales Orders',
-        style: {
-          color:  '#f5f7ff',
-        },
-      },
-      labels: {
-        style: {
-          colors: ['#f5f7ff'],
-        },
-      },
-    },
-  ],
-  tooltip: {
-    shared: true,
-    intersect: false,
-    theme: 'dark',
-  }
-};
-
-var areaChart = new ApexCharts(document.querySelector('#area-chart'), areaChartOptions);
-areaChart.render();
+getCrypto();

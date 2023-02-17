@@ -1,6 +1,8 @@
-# Admin Dashboard
+# Cryptocurrency Dashboard
 
-This is an admin dashboard built using **HTML 5**, **CSS 3**, **Bootstrap 5**, **Sass**, and **JavaScript**. Charts are built using **ApexCharts 3**.
+This is a cryptocurrency dashboard built using **HTML 5**, **CSS 3**, **Bootstrap 5**, **Sass**, and **vanilla JavaScript**. The website uses the **CoinGecko API** to get cryptocurrency data such as live prices, trading volume, exchange volumes, historical data, crypto categories, images, and more.
+
+![plot](https://github.com/BobsProgrammingAcademy/landing-page-bootstrap-sass/blob/master/images/main.png?raw=true)
 
 ## Copyright and License
 
