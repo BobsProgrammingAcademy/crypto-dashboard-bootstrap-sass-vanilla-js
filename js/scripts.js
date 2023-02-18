@@ -121,7 +121,7 @@ const createCryptoTable = () => {
   }
   
   let cryptoTable = document.createElement('table');
-  cryptoTable.classList.add('cryptoTable', 'table', 'table-dark', 'table-hover', 'border-light');
+  cryptoTable.classList.add('table', 'table-dark', 'table-hover', 'border-light', 'cryptoTable');
   
   let cryptoTableHead = document.createElement('thead');
   cryptoTableHead.className = 'cryptoTableHead';
@@ -176,7 +176,7 @@ const appendCrypto = (singleCoin, singleCoinID) => {
   coinVolume.innerHTML = '$' + singleCoin.total_volume.toLocaleString();
 
   let coinMarketCap = document.createElement('td');
-  coinMarketCap = '$' + singleCoin.market_cap.toLocaleString()
+  coinMarketCap.innerHTML = '$' + singleCoin.market_cap.toLocaleString()
 
   cryptoTableBodyRow.append(
     coinID,
