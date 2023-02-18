@@ -33,6 +33,8 @@ npm install
 
 To run the application, start the **Live Server** by clicking **Go Live** in the bottom right corner of the status bar in Visual Studio Code. This action will load the website in your default web browser. 
 
+![plot](https://github.com/BobsProgrammingAcademy/crypto-dashboard-bootstrap-sass-vanilla-js/blob/master/images/vscode.png?raw=true)
+
 ### View the application
 
 Once the **Live Server** is up and running, go to http://127.0.0.1:5500/index.html to view the application.
