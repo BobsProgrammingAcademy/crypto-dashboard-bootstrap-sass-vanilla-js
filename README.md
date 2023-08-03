@@ -1,6 +1,6 @@
 # Cryptocurrency Dashboard
 
-This is a cryptocurrency dashboard built using **HTML 5**, **CSS 3**, **Bootstrap 5**, **Sass**, and **vanilla JavaScript**. The website uses the **CoinGecko API** to get cryptocurrency data such as live prices, trading volume, exchange volumes, historical data, crypto categories, images, and more.
+This is a cryptocurrency dashboard built using **HTML 5**, **CSS 3**, **Bootstrap 5**, **Sass** and **vanilla JavaScript**. The website uses the **CoinGecko API** to get cryptocurrency data such as live prices, trading volume, exchange volumes, historical data, crypto categories, images, and more.
 
 ![plot](https://github.com/BobsProgrammingAcademy/crypto-dashboard-bootstrap-sass-vanilla-js/blob/master/images/main.png?raw=true)
 
