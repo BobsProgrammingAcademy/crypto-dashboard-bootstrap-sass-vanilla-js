@@ -35,7 +35,7 @@ To run the application, start the **Live Server** by clicking **Go Live** in the
 
 ![plot](https://github.com/BobsProgrammingAcademy/crypto-dashboard-bootstrap-sass-vanilla-js/blob/master/images/vscode.png?raw=true)
 
-### View the application
+## View the application
 
 Once the **Live Server** is up and running, go to http://127.0.0.1:5500/index.html to view the application.
 
