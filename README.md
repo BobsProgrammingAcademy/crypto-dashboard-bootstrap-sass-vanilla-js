@@ -21,7 +21,7 @@ Install the following prerequisites:
 
 ## Installation
 
-### Install required dependencies
+#### Install required dependencies
 
 From the **root** directory, run:
 
